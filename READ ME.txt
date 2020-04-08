@@ -1,0 +1,15 @@
+To get your Tesla telemetry CSV mapped in Houdini Apprentice, open the tesla_track_v12_lorespublic-template.hipnc file in the app, open the Window/Python Source Editor and paste in the contents read_CSV_and_animate_v19.py file and edit the line near the top that says this:
+
+trackmodecsv = '/path/to/sample_csv/telemetry-v1-2020-03-14-14_38_35.csv'
+
+to point to the full path to your CSV file. Then you can run the script in Houdini by clicking the Apply button in the Python Source Editor. It will take about 3-5 minutes to run on a modern computer. To bang out an animation playblast, the easiest way is to right click on the flipbook icon near the bottom left of the Houdini main window (right above the film cannister) and select Flipbook with New Settings. It will launch Mplay and render the frames. It's kind of slow. You will need to change the playback speed in MPlay to 48FPS to get it to play back at the right speed. This is the approximate number of entries in the CSV per second.
+
+Keep in mind that the script will spawn a bunch of new nodes in /obj/track/ that are connected to the /obj/track/fontmerge merge node. These are the lap speed peak and valley points and if you are running the script more than once, you should delete all those new nodes before running the script again or you'll have a ton of those overlapping each other. Otherwise the script will clean up all the existing track data and keyframes on its own.
+
+tesla_track_v12_lorespublic-with_track.hipnc is a final scene with the speed peak and valley points like in my video.
+
+If you get a problem with Houdini where the UI fails to update after running script, save the file and relaunch Houdini. It's a known bug but when I was last running it that issue didn't show up.
+
+If you're not familiar with Houdini Apprentice, it can be downloaded for free from sidefx.com
+
+Sorry about the lo-fi Model 3. I paid for the 3D model and can't include the original due to licensing restrictions.
